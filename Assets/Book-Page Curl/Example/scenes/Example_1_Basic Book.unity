@@ -157,7 +157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &28866458
 RectTransform:
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 28866457}
   m_LocalRotation: {x: -0.04276422, y: -0.07120874, z: 0.86449724, w: 0.4957268}
-  m_LocalPosition: {x: 0, y: 0, z: 45}
+  m_LocalPosition: {x: 0, y: 0, z: 38.72811}
   m_LocalScale: {x: 0.3609801, y: 0.3609801, z: 0.36098006}
   m_Children: []
   m_Father: {fileID: 1346331177}
@@ -173,9 +173,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 4.63, y: -8.338, z: 120}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 127, y: -188}
+  m_AnchoredPosition: {x: 76.454254, y: -270.88043}
   m_SizeDelta: {x: 494, y: 444}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.24217522, y: 1.0407546}
 --- !u!114 &28866459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -70.597, y: -101.55}
-  m_SizeDelta: {x: 93.72571, y: 343.4554}
+  m_SizeDelta: {x: 93.781815, y: 343.4891}
   m_Pivot: {x: 0, y: 0.1}
 --- !u!1 &208226139
 GameObject:
@@ -859,7 +859,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 94, y: -134.4}
-  m_SizeDelta: {x: 187.45142, y: 474.67142}
+  m_SizeDelta: {x: 187.56363, y: 474.78363}
   m_Pivot: {x: 1, y: 0.12}
 --- !u!1 &1207193322
 GameObject:
@@ -1220,7 +1220,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 044c36180c2739048b3013791a4ce1c4, type: 3}
   interactable: 1
   enableShadowEffect: 1
-  maxFlipDistance: 170.85416
+  maxFlipDistance: 214.91667
   currentPage: 0
   ClippingPlane: {fileID: 1092822306}
   NextPageClip: {fileID: 2053176083}
@@ -1533,7 +1533,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 70.597, y: -101.54}
-  m_SizeDelta: {x: 93.72571, y: 343.4554}
+  m_SizeDelta: {x: 93.781815, y: 343.4891}
   m_Pivot: {x: 1, y: 0.1}
 --- !u!1 &2053176082
 GameObject:
@@ -1620,7 +1620,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -94, y: -100.86}
-  m_SizeDelta: {x: 93.72571, y: 343.4554}
+  m_SizeDelta: {x: 93.781815, y: 343.4891}
   m_Pivot: {x: 0.000000020489097, y: 0.12}
 --- !u!1 &2073085176
 GameObject:
