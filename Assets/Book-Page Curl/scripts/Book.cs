@@ -54,6 +54,7 @@ public class Book : MonoBehaviour {
     public Image RightNext;
 
     public Image LeftHand;
+    public Image RightHand;
 
     public UnityEvent OnFlip;
     
@@ -89,6 +90,7 @@ public class Book : MonoBehaviour {
         //Right.gameObject.SetActive(false);
 
         LeftHand.gameObject.SetActive(false);
+        RightHand.gameObject.SetActive(false);
 
         UpdateSprites();
         Vector3 globalsb = BookPanel.transform.position + new Vector3(0, -pageHeight / 2);
@@ -213,6 +215,10 @@ public class Book : MonoBehaviour {
         Vector3 leftHandPosition = new Vector3(Input.mousePosition.x, 0, 0); // переменной записываються координаты мыши по иксу и игрику
         LeftHand.transform.position = leftHandPosition; // и собственно объекту записываються координаты
 
+        Vector3 rightHandPosition = new Vector3(Input.mousePosition.x, 0, 0); // переменной записываються координаты мыши по иксу и игрику
+        RightHand.transform.position = rightHandPosition; // и собственно объекту записываються координаты
+
+
 
         Shadow.rectTransform.SetParent(Right.rectTransform, true);
     }
@@ -313,6 +319,7 @@ public class Book : MonoBehaviour {
     public void OnMouseDragRightPage()
     {
         LeftHand.gameObject.SetActive(true);
+        RightHand.gameObject.SetActive(true);
         if (interactable)
         DragRightPageToPoint(transformPoint(Input.mousePosition));
 
@@ -362,6 +369,8 @@ public class Book : MonoBehaviour {
     public void OnMouseRelease()
     {
         LeftHand.gameObject.SetActive(false);
+        RightHand.gameObject.SetActive(false);
+
         if (interactable)
             ReleasePage();
     }
