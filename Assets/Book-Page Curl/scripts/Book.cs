@@ -78,6 +78,8 @@ public class Book : MonoBehaviour {
     //current flip mode
     FlipMode mode;
 
+    float handXPositin;
+
     float pageWidth;
     float pageHeight;
 
@@ -185,26 +187,29 @@ public class Book : MonoBehaviour {
         //Hand1.transform.SetParent(BookPanel.transform, true);
         c = Calc_C_Position(followLocation);
         //c.x = Input.mousePosition.x;
-        c.y = -145;
+        c.y = ebl.y;// -145;// pageHeight/2;
         Vector3 t1;
         float T0_T1_Angle = Calc_T0_T1_Angle(c,ebr,out t1);
+//        T0_T1_Angle = 0;
         if (T0_T1_Angle >= -90) T0_T1_Angle -= 180;
 
         ClippingPlane.rectTransform.pivot = new Vector2(1, 0.35f);
         ClippingPlane.transform.eulerAngles = new Vector3(0, 0, 0);//T0_T1_Angle + 90);  *** updated
         //t1.x = Input.mousePosition.x;
+        //c.y = -145;
         ClippingPlane.transform.position = BookPanel.TransformPoint(t1);
-
         //page position and angle
         Right.transform.position = BookPanel.TransformPoint(c);
+        //Right.transform.position = BookPanel.TransformPoint(Input.mousePosition);
+
         //float C_T1_dy = t1.y - c.y;
         //float C_T1_dx = t1.x - c.x;
         //float C_T1_Angle = 0;// *** Mathf.Atan2(C_T1_dy, C_T1_dx) * Mathf.Rad2Deg;
         Right.transform.eulerAngles = new Vector3(0, 0, 0);// C_T1_Angle);
 
         NextPageClip.transform.eulerAngles = new Vector3(0, 0, 0);//*** T0_T1_Angle + 90);
-        NextPageClip.transform.position = BookPanel.TransformPoint(t1);
-        //NextPageClip.transform.position = BookPanel.TransformPoint(c);
+        //NextPageClip.transform.position = BookPanel.TransformPoint(t1);
+        NextPageClip.transform.position = BookPanel.TransformPoint(Input.mousePosition);
         RightNext.transform.SetParent(NextPageClip.transform, true);
         Left.transform.SetParent(ClippingPlane.transform, true);
         Left.transform.SetAsFirstSibling();
@@ -212,10 +217,11 @@ public class Book : MonoBehaviour {
         //Hand1.transform.position =  BookPanel.TransformPoint(t1); ;
         //Hand1.transform.SetParent(NextPageClip.transform, true);
 
-        Vector3 leftHandPosition = new Vector3(Input.mousePosition.x, 0, 0); // переменной записываються координаты мыши по иксу и игрику
+        if (f.x >= c.x) handXPositin = Input.mousePosition.x;
+        Vector3 leftHandPosition = new Vector3(handXPositin, 0, 0); // переменной записываються координаты мыши по иксу и игрику
         LeftHand.transform.position = leftHandPosition; // и собственно объекту записываються координаты
 
-        Vector3 rightHandPosition = new Vector3(Input.mousePosition.x, 0, 0); // переменной записываються координаты мыши по иксу и игрику
+        Vector3 rightHandPosition = new Vector3(handXPositin, 0, 0); // переменной записываються координаты мыши по иксу и игрику
         RightHand.transform.position = rightHandPosition; // и собственно объекту записываються координаты
 
 
@@ -231,12 +237,12 @@ public class Book : MonoBehaviour {
         Vector3 t0 = (c + bookCorner) / 2;
         float T0_CORNER_dy = bookCorner.y - t0.y;
         float T0_CORNER_dx = bookCorner.x - t0.x;
-        float T0_CORNER_Angle = Mathf.Atan2(T0_CORNER_dy, T0_CORNER_dx);
+        float T0_CORNER_Angle =  Mathf.Atan2(T0_CORNER_dy, T0_CORNER_dx);
         float T0_T1_Angle = 90 - T0_CORNER_Angle;
         
         float T1_X = t0.x - T0_CORNER_dy * Mathf.Tan(T0_CORNER_Angle);
         T1_X = normalizeT1X(T1_X, bookCorner, sb);
-        //t1 = new Vector3(T1_X, sb.y, 0);
+        //t1 = new Vector3(sb.x, sb.y, 0);
         t1 = new Vector3(T1_X, sb.y, 0);
         ////////////////////////////////////////////////
         //clipping plane angle=T0_T1_Angle
@@ -255,8 +261,11 @@ public class Book : MonoBehaviour {
     }
     private Vector3 Calc_C_Position(Vector3 followLocation)
     {
-        Vector3 c;
+       
         f = followLocation;
+
+        
+        f.y = ebl.y;
         float F_SB_dy = f.y - sb.y;
         float F_SB_dx = f.x - sb.x;
         float F_SB_Angle =  Mathf.Atan2(F_SB_dy, F_SB_dx);
@@ -275,6 +284,13 @@ public class Book : MonoBehaviour {
         float C_ST_distance = Vector2.Distance(c, st);
         if (C_ST_distance > radius2)
             c = r2;
+        //***
+        //c.x = Input.mousePosition.x - 600;// ebr.x - pageWidth;
+        //c.y = -140;
+
+
+        //Vector3 c = new Vector3(Input.mousePosition.x - 300/*pageWidth/2 - ebr.x*/, ebl.y, 0);
+
         return c;
     }
     public void DragRightPageToPoint(Vector3 point)
